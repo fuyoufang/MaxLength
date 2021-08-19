@@ -1,0 +1,16 @@
+PODS:
+  - MaxLength (0.1.0)
+
+DEPENDENCIES:
+  - MaxLength (from `../`)
+
+EXTERNAL SOURCES:
+  MaxLength:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MaxLength: 04063d6514fe893ff056cddf45eb022d5a20c503
+
+PODFILE CHECKSUM: bd7717095f718c0480722992f569178086b42cdb
+
+COCOAPODS: 1.9.0.beta.2
