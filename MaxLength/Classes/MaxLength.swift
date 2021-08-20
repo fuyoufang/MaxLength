@@ -45,7 +45,6 @@ extension UITextField: MaxLengthType {
     }
 }
 
-
 private var maxLengthKey: Void?
 private var observerKey: Void?
 
@@ -63,17 +62,17 @@ extension MaxLengthType  {
                 if observer == nil {
                     observer = Observer(textInput: self,
                                         textDidChange: { [weak self] (notification) in
-                                            self?.checkTextForMaxLength()
+                                            self?.checkUserInputForMaxLength()
                                         })
                 }
-                checkTextForMaxLength()
+                checkUserInputForMaxLength()
             } else {
                 observer = nil
             }
         }
     }
     
-    func checkTextForMaxLength() {
+    func checkUserInputForMaxLength() {
         // 高亮部分为空时，并且 maxLength 存在时，再判断字符长度
         guard self.markedTextRange == nil,
               let maxLength = maxLength else {
