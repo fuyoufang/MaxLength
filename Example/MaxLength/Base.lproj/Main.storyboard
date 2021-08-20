@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mwr-Cp-TOK">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="ca1-Ab-oAW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJc-JL-wU8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="mwr-Cp-TOK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LRw-OU-YAH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="maV-kD-2us"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-807" y="105"/>
+        </scene>
+        <!--UITextField-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MaxLength_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,18 +37,28 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nZo-7o-25o">
-                                <rect key="frame" x="116" y="160" width="143" height="34"/>
+                                <rect key="frame" x="116" y="204" width="143" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jde-ZU-0Ig">
+                                <rect key="frame" x="171.5" y="318" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="QcI-8e-U4w" kind="show" id="07y-AB-lpt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="nZo-7o-25o" secondAttribute="trailing" constant="100" id="6q4-3V-Wc6"/>
                             <constraint firstItem="nZo-7o-25o" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="160" id="QDO-UU-Bfc"/>
                             <constraint firstItem="nZo-7o-25o" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="100" id="U35-ec-4Yk"/>
+                            <constraint firstItem="Jde-ZU-0Ig" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="lPR-VV-iVX"/>
+                            <constraint firstItem="Jde-ZU-0Ig" firstAttribute="top" secondItem="nZo-7o-25o" secondAttribute="bottom" constant="80" id="q8c-H5-3xR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="UITextField" id="Bcz-d0-KAi"/>
                     <connections>
                         <outlet property="textField" destination="nZo-7o-25o" id="GCJ-OW-JHH"/>
                     </connections>
@@ -40,5 +67,55 @@
             </objects>
             <point key="canvasLocation" x="38" y="105"/>
         </scene>
+        <!--UITextView-->
+        <scene sceneID="iOf-EW-C4E">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="onp-34-Xsp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="QcI-8e-U4w" customClass="TextViewInputController" customModule="MaxLength_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o9q-My-xVf"/>
+                        <viewControllerLayoutGuide type="bottom" id="SuB-X2-wVP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Re-Wm-s7W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vks-jy-bay">
+                                <rect key="frame" x="36" y="124" width="303" height="150"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="uIz-B0-omJ"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vks-jy-bay" firstAttribute="leading" secondItem="0Re-Wm-s7W" secondAttribute="leadingMargin" constant="20" id="0et-ci-2gh"/>
+                            <constraint firstItem="vks-jy-bay" firstAttribute="top" secondItem="o9q-My-xVf" secondAttribute="bottom" constant="80" id="SE7-Ry-3R9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vks-jy-bay" secondAttribute="trailing" constant="20" id="U76-rm-cHf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="UITextView" id="fo9-Wy-hfO"/>
+                    <connections>
+                        <outlet property="textView" destination="vks-jy-bay" id="0Fc-Qq-dqL"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="858" y="105"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
