@@ -7,18 +7,49 @@
 
 import UIKit
 
-public protocol MaxLengthCompatible: AnyObject { }
+// public protocol MaxLengthCompatible: AnyObject { }
+
+public protocol MaxLengthType: UITextInput {
+
+    /// 需要判断输入最大长度的字符串
+    ///
+    /// UITextField 中 text 的定义为：
+    /// open var text: String? // default is nil
+    ///
+    /// UITextView 中 text 的定义为：
+    /// open var text: String!
+    ///
+    /// 所有通过 userInput 将两处不同的定义进行统一
+    var userInput: String? { get set }
+}
+
+extension UITextView: MaxLengthType {
+    public var userInput: String? {
+        get {
+            return self.text
+        }
+        set {
+            self.text = newValue
+        }
+    }
+}
+
+extension UITextField: MaxLengthType {
+    public var userInput: String? {
+        get {
+            return self.text
+        }
+        set {
+            self.text = newValue
+        }
+    }
+}
+
 
 private var maxLengthKey: Void?
 private var observerKey: Void?
 
-public protocol MaxLengthType { }
-
-extension UITextView: MaxLengthType { }
-
-extension UITextField: MaxLengthType { }
-
-extension MaxLengthType where Self: UITextInput  {
+extension MaxLengthType  {
     
     /// 文本限制的最大长度
     /// 为 nil 是表示不限制
@@ -49,21 +80,12 @@ extension MaxLengthType where Self: UITextInput  {
             return
         }
         
-        if let base = self as? UITextField {
-            guard let text = base.text,
-                  maxLength > text.count else {
-                return
-            }
-            let endIndex = text.index(text.startIndex, offsetBy: maxLength)
-            base.text = String(text[text.startIndex..<endIndex])
-        } else if let base = self as? UITextView {
-            guard let text = base.text,
-                  maxLength > text.count else {
-                return
-            }
-            let endIndex = text.index(text.startIndex, offsetBy: maxLength)
-            base.text = String(text[text.startIndex..<endIndex])
+        guard let text = self.userInput,
+              text.count > maxLength else {
+            return
         }
+        let endIndex = text.index(text.startIndex, offsetBy: maxLength)
+        userInput = String(text[text.startIndex..<endIndex])
     }
     
     var observer: Observer? {

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textField.maxLength = 2
+        textField.maxLength = 3
     }
 
 
